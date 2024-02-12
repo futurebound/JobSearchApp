@@ -1,4 +1,4 @@
-
+// View as <div>, Text as <p>
 import {View, Text} from 'react-native';
 
 const Home = () => {
