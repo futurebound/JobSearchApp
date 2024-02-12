@@ -35,7 +35,9 @@ const Home = () => {
                }}
             >
             <Welcome/>
-            <Popularjobs />
+
+            {/* TODO: PopularJobs, NearbyJobs */}
+            <Popularjobs /> 
             <Nearbyjobs />
             </View>
          </ScrollView>
