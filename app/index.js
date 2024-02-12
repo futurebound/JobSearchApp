@@ -1,11 +1,45 @@
-// View as <div>, Text as <p>
-import {View, Text} from 'react-native';
+import {useState} from 'react';
+import {View, Text, ScrollView, SafeAreaView} from 'react-native';
+import {Stack, useRouter} from 'expo-router';
+
+import { COLORS, icons, images, SIZES} from '../constants';
+import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome} from '../components';
 
 const Home = () => {
+   const router = useRouter();
+
    return (
-      <View>
-         <Text>Home</Text>
-      </View>
+      // SafeAreaView (over View) display considers device hardware locations
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite}}>
+         <Stack.Screen
+            options={{
+               headerStyle: { backgroundColor: COLORS.lightWhite},
+               headerShadowVisible: false,
+               // adds top left menu button
+               headerLeft: () => (
+                  <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
+               ),
+               // adds top right profile button
+               headerRight: () => (
+                  <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
+               ),
+               headerTitle: "" // makes original center text empty
+            }}
+         />
+
+         <ScrollView showsVerticalScrollIndicator={false}>
+            <View 
+               style={{
+                  flex: 1,
+                  padding: SIZES.medium
+               }}
+            >
+            <Welcome/>
+            <Popularjobs />
+            <Nearbyjobs />
+            </View>
+         </ScrollView>
+      </SafeAreaView>
    )
 }
 
